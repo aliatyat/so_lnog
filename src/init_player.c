@@ -37,3 +37,10 @@ void	init_player_position(t_slong *game)
 	ft_printf("Error: No player start position found\n");
 	exit(EXIT_FAILURE);
 }
+
+// Increment and display player movement count
+void	count_player_movement(t_slong *game)
+{
+	game->movement_count++;
+	ft_printf("Player movements: %d\n", game->movement_count);
+}

@@ -40,6 +40,7 @@ typedef struct s_slong
 	int		found_exit;
 	int		collected;
 	int		required_collectibles;
+	int		movement_count;
 }			t_slong;
 
 // Map Functions
@@ -76,5 +77,10 @@ char		**copy_map(char **map);
 
 // Utility Functions
 void		free_map(char **map);
+
+//Player Movement
+void		count_player_movement(t_slong *game);
+void		handle_movement(int keycode, t_slong *game);
+void		move_player(t_slong *game, int dx, int dy);
 
 #endif

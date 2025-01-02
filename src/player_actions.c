@@ -31,7 +31,7 @@ int	handle_tile_interaction(t_slong *game, int new_x, int new_y)
 		else
 		{
 			ft_printf("You must collect all coins before exiting!\n");
-			return (0);
+			return (1);
 		}
 	}
 	return (1);
@@ -49,8 +49,10 @@ void	move_player(t_slong *game, int dx, int dy)
 		return ;
 	if (!handle_tile_interaction(game, new_x, new_y))
 		return ;
-	game->map_data[game->player_y][game->player_x] = '0';
-	game->map_data[new_y][new_x] = 'P';
+	if (game->map_data[game->player_y][game->player_x] != 'E')
+		game->map_data[game->player_y][game->player_x] = '0';
+	if (game->map_data[new_y][new_x] != 'E')
+		game->map_data[new_y][new_x] = 'P';
 	game->player_x = new_x;
 	game->player_y = new_y;
 	mlx_clear_window(game->mlx, game->win);
@@ -61,14 +63,8 @@ int	keys_hook(int keycode, t_slong *game)
 {
 	if (keycode == XK_Escape)
 		exit_hook(game);
-	if (keycode == XK_w || keycode == XK_Up)
-		move_player(game, 0, -1);
-	if (keycode == XK_s || keycode == XK_Down)
-		move_player(game, 0, 1);
-	if (keycode == XK_d || keycode == XK_Right)
-		move_player(game, 1, 0);
-	if (keycode == XK_a || keycode == XK_Left)
-		move_player(game, -1, 0);
+	else
+		handle_movement(keycode, game);
 	mlx_clear_window(game->mlx, game->win);
 	render_map(game);
 	return (0);
