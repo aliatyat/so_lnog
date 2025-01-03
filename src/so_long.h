@@ -39,13 +39,16 @@ typedef struct s_slong
 	int		total_collectibles;
 	int		found_exit;
 	int		collected;
+	int		player;
+	int		exitd;
+	int		collectible;
 	int		required_collectibles;
 	int		movement_count;
 }			t_slong;
 
 // Map Functions
 void		save_for_map(char *map_file, t_slong *game);
-int			ft_strlen_2d(char **map);
+//int			ft_strlen_2d(char **map);
 void		read_map_lines(int fd, char **tmp);
 void		read_for_fd(char *map_file, int *fd, char **tmp);
 
@@ -61,12 +64,14 @@ int			all_coins_collected(t_slong *game);
 int			can_move_to(t_slong *game, int new_x, int new_y);
 
 // Map Validation Functions
+int			validate_file_extension(char *filename);
 void		validate_map(char **map);
 void		validate_rectangular(char **map);
 void		validate_borders(char **map);
 void		validate_components(char **map, int fd);
 void		validate_map_not_empty(char *tmp, int fd);
 void		validate_no_empty_lines(char *tmp, int fd);
+void		validate_map_characters(char **map);
 
 //Validate_path
 void		validate_path(t_slong *game);

@@ -15,6 +15,8 @@
 // Open the map file and initialize temporary buffer
 void	read_for_fd(char *map_file, int *fd, char **tmp)
 {
+	if (!validate_file_extension(map_file))
+		exit(EXIT_FAILURE);
 	*fd = open(map_file, O_RDONLY);
 	if (*fd == -1)
 	{
@@ -88,4 +90,17 @@ void	validate_no_empty_lines(char *tmp, int fd)
 		}
 		i++;
 	}
+}
+
+int	validate_file_extension(char *filename)
+{
+	int	len;
+
+	len = ft_strlen(filename);
+	if (len < 5 || ft_strncmp(&filename[len - 4], ".ber", 4) != 0)
+	{
+		ft_printf("Error: Invalid file extension.\n");
+		return (0);
+	}
+	return (1);
 }

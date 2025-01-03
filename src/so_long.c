@@ -40,6 +40,7 @@ void	init_game(t_slong *game)
 	if (!game->mlx)
 	{
 		ft_printf("Error: MLX initialization failed\n");
+		free_map (game->map_data);
 		exit(EXIT_FAILURE);
 	}
 }
@@ -54,6 +55,8 @@ void	set_window_size(t_slong *game)
 	if (!game->win)
 	{
 		ft_printf("Error: Window creation failed\n");
+		mlx_destroy_display(game->mlx);
+		free (game->mlx);
 		free_map(game->map_data);
 		exit(EXIT_FAILURE);
 	}

@@ -57,7 +57,7 @@ void				*ft_memmove(void *dest, const void *src, size_t n);
 void				*ft_memset(void *s, int c, size_t n);
 void				*ft_calloc(size_t count, size_t size);
 size_t				ft_strlen(const char *s);
-int                 ft_strlen_2d(char **map);
+int					ft_strlen_2d(char **map);
 int					ft_toupper(int c);
 int					ft_tolower(int c);
 int					ft_strncmp(char *s1, char *s2, unsigned int n);

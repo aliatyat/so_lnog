@@ -25,6 +25,7 @@ void	validate_rectangular(char **map)
 		if ((int)ft_strlen(map[y]) != width)
 		{
 			ft_printf("Error: Map is not rectangular\n");
+			free_map (map);
 			exit(EXIT_FAILURE);
 		}
 		y++;
@@ -46,11 +47,13 @@ void	validate_borders(char **map)
 			if ((y == 0 || !map[y + 1]) && map[y][x] != '1')
 			{
 				ft_printf("Error: Top/Bottom border is not enclosed\n");
+				free_map (map);
 				exit(EXIT_FAILURE);
 			}
 			if ((x == 0 || !map[y][x + 1]) && map[y][x] != '1')
 			{
 				ft_printf("Error: Side border is not enclosed\n");
+				free_map (map);
 				exit(EXIT_FAILURE);
 			}
 			x++;
