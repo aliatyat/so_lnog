@@ -82,6 +82,7 @@ char		**copy_map(char **map);
 
 // Utility Functions
 void		free_map(char **map);
+void		free_res(t_slong *game);
 
 //Player Movement
 void		count_player_movement(t_slong *game);

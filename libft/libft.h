@@ -72,5 +72,7 @@ char				*ft_strchr(const char *s, int c);
 char				*ft_strnstr(const char *haystack, const char *needle,
 						size_t len);
 char				*ft_strrchr(const char *s, int c);
+void				ft_strlcpy_gnl(char *dst, const char *src, size_t dstsize);
+char				*ft_strjoin_gnl(char *s1, char *s2, int *eol_loc);
 
 #endif

@@ -47,14 +47,15 @@ void	read_map_lines(int fd, char **tmp)
 			break ;
 		}
 		new_tmp = ft_strjoin(*tmp, line);
-		free(*tmp);
 		free(line);
 		if (!new_tmp)
 		{
+			free (*tmp);
 			ft_printf("Error: memory allocation failed\n");
 			close(fd);
 			exit(EXIT_FAILURE);
 		}
+		free (*tmp);
 		*tmp = new_tmp;
 		line = get_next_line(fd);
 	}
